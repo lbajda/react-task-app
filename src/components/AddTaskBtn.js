@@ -4,31 +4,44 @@ import { XMarkIcon } from '@heroicons/react/24/outline'
 import { useDispatch } from 'react-redux'
 import { v4 as uuidv4 } from 'uuid'
 import { addTodo } from '../slices/todoSlice'
-// import { add } from 'date-fns'
 
 export default function AddTaskBtn() {
+    const [formValues, setFormValues] = useState({
+        title: '',
+        description: '',
+        status: '',
+        dueDate: '',
+    })
     const [open, setOpen] = useState(false)
-    const [title, setTitle] = useState('')
-    const [description, setDescription] = useState('')
-    const [status, setStatus] = useState('')
-    const [dueDate, setDueDate] = useState('')
     const dispatch = useDispatch()
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log({ title, description, status, dueDate })
-        if (title && description && status && dueDate) {
+        console.log(formValues)
+        if (Object.values(formValues).every((value) => value)) {
             dispatch(
                 addTodo({
                     id: uuidv4(),
-                    title,
-                    description,
-                    status,
-                    dueDate,
-                    timestamp: new Date().toLocaleDateString,
+                    ...formValues,
+                    timestamp: new Date().toLocaleDateString(),
                 })
             )
+            setFormValues({
+                title: '',
+                description: '',
+                status: '',
+                dueDate: '',
+            })
+            setOpen(false)
         }
+    }
+
+    const handleChange = (e) => {
+        const { name, value } = e.target
+        setFormValues((prevValues) => ({
+            ...prevValues,
+            [name]: value,
+        }))
     }
 
     return (
@@ -70,16 +83,17 @@ export default function AddTaskBtn() {
                             <input
                                 type='text'
                                 id='title'
-                                value={title}
-                                onChange={(e) => setTitle(e.target.value)}
+                                name='title'
+                                value={formValues.title}
+                                onChange={(e) => handleChange(e)}
                                 className='border border-gray-300 rounded-md p-2'
                             />
                             <label htmlFor='description'>Description</label>
                             <textarea
                                 name='description'
                                 id='description'
-                                value={description}
-                                onChange={(e) => setDescription(e.target.value)}
+                                value={formValues.description}
+                                onChange={(e) => handleChange(e)}
                                 cols='30'
                                 rows='10'
                                 className='border border-gray-300 rounded-md p-2'
@@ -89,8 +103,8 @@ export default function AddTaskBtn() {
                             <select
                                 name='status'
                                 id='status'
-                                value={status}
-                                onChange={(e) => setStatus(e.target.value)}
+                                value={formValues.status}
+                                onChange={(e) => handleChange(e)}
                                 className='border border-gray-300 rounded-md p-2'>
                                 <option value='incomplete'>Incomplete</option>
                                 <option value='completed'>Completed</option>
@@ -100,14 +114,14 @@ export default function AddTaskBtn() {
                             <input
                                 type='date'
                                 id='dueDate'
-                                value={dueDate}
-                                onChange={(e) => setDueDate(e.target.value)}
+                                name='dueDate'
+                                value={formValues.dueDate}
+                                onChange={(e) => handleChange(e)}
                                 className='border border-gray-300 rounded-md p-2'
                             />
                             <div className='flex justify-end'>
                                 <button
                                     type='submit'
-                                    onClick={() => setOpen(!open)}
                                     className='bg-blue-500 text-white px-4 py-2 rounded-md'>
                                     Add Task
                                 </button>
