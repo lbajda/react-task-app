@@ -4,5 +4,20 @@
             "path": "../"
         }
     ],
-    "settings": {}
+    "settings": {
+        // "editor.defaultFormatter": "esbenp.prettier-vscode",
+        // "editor.formatOnSave": true,
+        // "[javascript]": {
+        //     "editor.formatOnSave": false
+        // },
+        // "[javascriptreact]": {
+        //     "editor.formatOnSave": false
+        // },
+        // "editor.codeActionsOnSave": {
+        //     "source.fixAll": true
+        // },
+        // "eslint.alwaysShowStatus": true,
+        "prettier.requireConfig": true,
+        "prettier.configPath": "./.prettierrc"
+    }
 }
