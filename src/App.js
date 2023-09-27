@@ -4,11 +4,13 @@ import AppContent from './components/AppContent'
 import AppHeader from './components/AppHeader'
 import PageTitle from './components/PageTitle'
 import styles from './styles/modules/app.module.scss'
+import ThemeToggle from './app/ThemeToggle'
 
 function App() {
     return (
         <>
-            <div className='container px-4 lg:px-8 mx-auto'>
+            <div className='container px-4 lg:px-8 mx-auto '>
+                <ThemeToggle />
                 <PageTitle>TODO List</PageTitle>
                 <div className={styles.app__wrapper}>
                     <AppHeader />

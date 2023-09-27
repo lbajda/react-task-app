@@ -3,30 +3,26 @@ import { motion } from 'framer-motion'
 import toast from 'react-hot-toast'
 import React, { useEffect, useState } from 'react'
 import { MdDelete, MdEdit } from 'react-icons/md'
+import { TrashIcon, PencilIcon } from '@heroicons/react/24/outline'
 import { useDispatch } from 'react-redux'
 import { deleteTodo, updateTodo } from '../slices/todoSlice'
 import styles from '../styles/modules/todoItem.module.scss'
 import { getClasses } from '../utils/getClasses'
 import CheckButton from './CheckButton'
-import AddTaskBtn from './AddTaskBtn'
+import TodoModal from './TodoModal'
 
 const child = {
     hidden: { y: 20, opacity: 0 },
     visible: {
         y: 0,
         opacity: 1,
-        // transition: {
-        //   duration: 0.3,
-        //   type: 'spring',
-        //   damping: 25,
-        //   stiffness: 500,
-        // },
     },
 }
 
-export default function TodoItem() {
+function TodoItem({ todo }) {
     const dispatch = useDispatch()
     const [checked, setChecked] = useState(false)
+    const [updateModalOpen, setUpdateModalOpen] = useState(false)
 
     useEffect(() => {
         if (todo.status === 'complete') {
@@ -73,12 +69,13 @@ export default function TodoItem() {
                 </div>
                 <div className={styles.todoActions}>
                     <div
-                        className={styles.icon}
+                        // className={styles.icon}
+                        className='bg-slate-200  hover:bg-red-300 text-slate-500 p-3 rounded-lg transition-colors'
                         onClick={() => handleDelete()}
                         onKeyDown={() => handleDelete()}
                         tabIndex={0}
                         role='button'>
-                        <MdDelete />
+                        <TrashIcon className='h-6 w-6 ' />
                     </div>
                     <div
                         className={styles.icon}
@@ -86,16 +83,18 @@ export default function TodoItem() {
                         onKeyDown={() => handleUpdate()}
                         tabIndex={0}
                         role='button'>
-                        <MdEdit />
+                        <PencilIcon className='h-6 w-6' />
                     </div>
                 </div>
             </motion.div>
-            <AddTaskBtn
+            <TodoModal
                 type='update'
+                modalOpen={updateModalOpen}
+                setModalOpen={setUpdateModalOpen}
                 todo={todo}
-                setUpdateModalOpen={setUpdateModalOpen}
-                updateModalOpen={updateModalOpen}
             />
         </>
     )
 }
+
+export default TodoItem

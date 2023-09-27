@@ -1,10 +1,12 @@
 import React, { Fragment, useState, useEffect } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import { useDispatch } from 'react-redux'
+import { AnimatePresence, motion } from 'framer-motion'
 import { Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import toast from 'react-hot-toast'
 import { addTodo, updateTodo } from '../slices/todoSlice'
+import Button from './Button'
 
 const dropIn = {
     hidden: {
@@ -27,7 +29,7 @@ const dropIn = {
     },
 }
 
-export default function AddTaskBtn({ type, setOpen, setModalOpen, todo }) {
+export default function TodoModal({ type, setOpen, setModalOpen, todo }) {
     const dispatch = useDispatch()
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
@@ -201,13 +203,18 @@ export default function AddTaskBtn({ type, setOpen, setModalOpen, todo }) {
                                     onClick={() => setIsOpen(false)}>
                                     Cancel
                                 </button>
-                                <button
+                                <Button type='submit' variant='primary'>
+                                    {type === 'add'
+                                        ? 'Add Task'
+                                        : 'Update Task'}
+                                </Button>
+                                {/* <button
                                     type='submit'
                                     className='bg-blue-500 text-white px-4 py-2 rounded-md'>
                                     {type === 'add'
                                         ? 'Add Task'
                                         : 'Update Task'}
-                                </button>
+                                </button> */}
                             </div>
                         </form>
                     </div>
