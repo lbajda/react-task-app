@@ -1,47 +1,97 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
+import { v4 as uuidv4 } from 'uuid'
+import { useDispatch } from 'react-redux'
 import { Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
-import { useDispatch } from 'react-redux'
-import { v4 as uuidv4 } from 'uuid'
-import { addTodo } from '../slices/todoSlice'
+import toast from 'react-hot-toast'
+import { addTodo, updateTodo } from '../slices/todoSlice'
 
-export default function AddTaskBtn() {
-    const [formValues, setFormValues] = useState({
-        title: '',
-        description: '',
-        status: '',
-        dueDate: '',
-    })
-    const [open, setOpen] = useState(false)
+const dropIn = {
+    hidden: {
+        opacity: 0,
+        transform: 'scale(0.9)',
+    },
+    visible: {
+        transform: 'scale(1)',
+        opacity: 1,
+        transition: {
+            duration: 0.1,
+            type: 'spring',
+            damping: 25,
+            stiffness: 500,
+        },
+    },
+    exit: {
+        transform: 'scale(0.9)',
+        opacity: 0,
+    },
+}
+
+export default function AddTaskBtn({ type, setOpen, setModalOpen, todo }) {
     const dispatch = useDispatch()
+    const [title, setTitle] = useState('')
+    const [description, setDescription] = useState('')
+    const [dueDate, setDueDate] = useState('')
+    const [status, setStatus] = useState('incomplete')
+    const [isOpen, setIsOpen] = useState(false)
+
+    useEffect(() => {
+        if (type === 'update') {
+            setTitle(todo.title)
+            setDescription(todo.description)
+            setDueDate(todo.dueDate)
+            setStatus(todo.status)
+        } else {
+            setTitle('')
+            setStatus('incomplete')
+        }
+    }, [type, todo, setOpen])
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(formValues)
-        if (Object.values(formValues).every((value) => value)) {
-            dispatch(
-                addTodo({
-                    id: uuidv4(),
-                    ...formValues,
-                    timestamp: new Date().toLocaleDateString(),
-                })
-            )
-            setFormValues({
-                title: '',
-                description: '',
-                status: '',
-                dueDate: '',
-            })
+        if (title === '') {
+            toast.error('Please enter a title')
+            return
+        }
+        if (title && description && status && dueDate) {
+            if (type === 'add') {
+                dispatch(
+                    addTodo({
+                        id: uuidv4(),
+                        title,
+                        description,
+                        dueDate,
+                        status,
+                        time: new Date().toLocaleString(),
+                    })
+                )
+                toast.success('Task added successfully')
+            }
+            if (type === 'update') {
+                if (
+                    todo.title !== title ||
+                    todo.status !== status ||
+                    todo.description !== description ||
+                    todo.dueDate !== dueDate
+                ) {
+                    dispatch(
+                        updateTodo({
+                            ...todo,
+                            title,
+                            status,
+                            description,
+                            dueDate,
+                        })
+                    )
+                    toast.success('Task Updated successfully')
+                } else {
+                    toast.error('No changes made')
+                    return
+                }
+            }
+
             setOpen(false)
         }
-    }
-
-    const handleChange = (e) => {
-        const { name, value } = e.target
-        setFormValues((prevValues) => ({
-            ...prevValues,
-            [name]: value,
-        }))
     }
 
     return (
@@ -49,12 +99,12 @@ export default function AddTaskBtn() {
             <button
                 type='button'
                 className='bg-blue-500 text-white px-4 py-2 rounded-md'
-                onClick={() => setOpen(!open)}>
+                onClick={() => setIsOpen(!isOpen)}>
                 Add Task
             </button>
             <Transition
                 as={Fragment}
-                show={open}
+                show={isOpen}
                 enter='transition-opacity duration-500'
                 enterFrom='opacity-0'
                 enterTo='opacity-100'
@@ -67,7 +117,7 @@ export default function AddTaskBtn() {
                             <button
                                 type='button'
                                 className='text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500'
-                                onClick={() => setOpen(!open)}>
+                                onClick={() => setIsOpen(!isOpen)}>
                                 <span className='sr-only'>Close</span>
                                 <XMarkIcon
                                     className='h-6 w-6'
@@ -79,51 +129,84 @@ export default function AddTaskBtn() {
                         <form
                             className='flex flex-col space-y-4 mt-4'
                             onSubmit={(e) => handleSubmit(e)}>
-                            <label htmlFor='title'>Title</label>
-                            <input
-                                type='text'
-                                id='title'
-                                name='title'
-                                value={formValues.title}
-                                onChange={(e) => handleChange(e)}
-                                className='border border-gray-300 rounded-md p-2'
-                            />
-                            <label htmlFor='description'>Description</label>
-                            <textarea
-                                name='description'
-                                id='description'
-                                value={formValues.description}
-                                onChange={(e) => handleChange(e)}
-                                cols='30'
-                                rows='10'
-                                className='border border-gray-300 rounded-md p-2'
-                            />
+                            <label htmlFor='title' className='flex flex-col'>
+                                Title
+                                <input
+                                    type='text'
+                                    id='title'
+                                    name='title'
+                                    value={title}
+                                    onChange={(e) => setTitle(e.target.value)}
+                                    className='border border-gray-300 rounded-md p-2'
+                                />
+                            </label>
+                            <label
+                                htmlFor='description'
+                                className='flex flex-col'>
+                                Description
+                                <textarea
+                                    name='description'
+                                    id='description'
+                                    value={description}
+                                    onChange={(e) =>
+                                        setDescription(e.target.value)
+                                    }
+                                    cols='30'
+                                    rows='5'
+                                    className='border border-gray-300 rounded-md p-2'
+                                />
+                            </label>
 
-                            <label htmlFor='status'>Status</label>
-                            <select
-                                name='status'
-                                id='status'
-                                value={formValues.status}
-                                onChange={(e) => handleChange(e)}
-                                className='border border-gray-300 rounded-md p-2'>
-                                <option value='incomplete'>Incomplete</option>
-                                <option value='completed'>Completed</option>
-                            </select>
-
-                            <label htmlFor='dueDate'>Due Date</label>
-                            <input
-                                type='date'
-                                id='dueDate'
-                                name='dueDate'
-                                value={formValues.dueDate}
-                                onChange={(e) => handleChange(e)}
-                                className='border border-gray-300 rounded-md p-2'
-                            />
-                            <div className='flex justify-end'>
+                            <div className='flex flex-col md:flex-row md:space-x-4 md:space-y-0 space-y-4'>
+                                <label
+                                    htmlFor='type'
+                                    className='flex flex-col grow'>
+                                    Status
+                                    <select
+                                        name='status'
+                                        id='type'
+                                        value={status}
+                                        onChange={(e) =>
+                                            setStatus(e.target.value)
+                                        }
+                                        className='border border-gray-300 rounded-md p-2'>
+                                        <option value='incomplete'>
+                                            Incomplete
+                                        </option>
+                                        <option value='complete'>
+                                            Completed
+                                        </option>
+                                    </select>
+                                </label>
+                                <label
+                                    htmlFor='dueDate'
+                                    className='flex flex-col grow'>
+                                    Due Date
+                                    <input
+                                        type='date'
+                                        id='dueDate'
+                                        name='dueDate'
+                                        value={dueDate}
+                                        onChange={(e) =>
+                                            setDueDate(e.target.value)
+                                        }
+                                        className='border border-gray-300 rounded-md p-2'
+                                    />
+                                </label>
+                            </div>
+                            <div className='flex justify-end pt-10'>
+                                <button
+                                    type='button'
+                                    className='border border-gray-300 rounded-md p-2 mr-2'
+                                    onClick={() => setIsOpen(false)}>
+                                    Cancel
+                                </button>
                                 <button
                                     type='submit'
                                     className='bg-blue-500 text-white px-4 py-2 rounded-md'>
-                                    Add Task
+                                    {type === 'add'
+                                        ? 'Add Task'
+                                        : 'Update Task'}
                                 </button>
                             </div>
                         </form>

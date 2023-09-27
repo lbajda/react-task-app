@@ -1,37 +1,60 @@
+import { AnimatePresence, motion } from 'framer-motion'
 import React from 'react'
+import { useSelector } from 'react-redux'
+import styles from '../styles/modules/app.module.scss'
+import TodoItem from './TodoItem'
+
+const container = {
+    hidden: { opacity: 1 },
+    visible: {
+        opacity: 1,
+        scale: 1,
+        transition: {
+            staggerChildren: 0.2,
+        },
+    },
+}
+const child = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+        y: 0,
+        opacity: 1,
+    },
+}
 
 export default function AppContent() {
-    return (
-        <div className='flex flex-col'>
-            <div>
-                <h2 className='text-2xl font-bold'>All Tasks</h2>
+    const todoList = useSelector((state) => state.todo.todoList)
+    const filterStatus = useSelector((state) => state.todo.filterStatus)
 
-                <div className='flex flex-col space-y-4 mt-4'>
-                    {/* <div className='flex justify-between'> */}
-                    <div className='flex flex-col space-y-2'>
-                        <h3 className='text-lg font-semibold'>Task 1</h3>
-                        <p className='text-sm text-gray-500'>
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Voluptatibus, quidem.
-                        </p>
-                    </div>
-                    <div className='flex flex-col space-y-2'>
-                        <h3 className='text-lg font-semibold'>Task 2</h3>
-                        <p className='text-sm text-gray-500'>
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Voluptatibus, quidem.
-                        </p>
-                    </div>
-                    <div className='flex flex-col space-y-2'>
-                        <h3 className='text-lg font-semibold'>Task 3</h3>
-                        <p className='text-sm text-gray-500'>
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Voluptatibus, quidem.
-                        </p>
-                    </div>
-                </div>
-                {/* </div> */}
-            </div>
-        </div>
+    const sortedTodoList = [...todoList]
+    sortedTodoList.sort((a, b) => new Date(b.time) - new Date(a.time))
+
+    const filteredTodoList = sortedTodoList.filter((item) => {
+        if (filterStatus === 'all') {
+            return true
+        }
+        return item.status === filterStatus
+    })
+
+    return (
+        <motion.div
+            className={styles.content__wrapper}
+            variants={container}
+            initial='hidden'
+            animate='visible'>
+            <AnimatePresence>
+                {filteredTodoList && filteredTodoList.length > 0 ? (
+                    filteredTodoList.map((todo) => (
+                        // <motion.div key={todo.id} variants={child}>
+                        <TodoItem key={todo.id} todo={todo} />
+                        // </motion.div>
+                    ))
+                ) : (
+                    <motion.p variants={child} className={styles.emptyText}>
+                        No Todos
+                    </motion.p>
+                )}
+            </AnimatePresence>
+        </motion.div>
     )
 }

@@ -1,47 +1,88 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const getInitialTodos = () => {
-    const todoListString = localStorage.getItem('todoList')
-    const todoList = todoListString ? JSON.parse(todoListString) : []
-    return todoList
+const getInitialState = () => {
+    // getting todo list from local storage
+    const todoList = window.localStorage.getItem('todoList')
+    // if todo list is not empty
+    if (todoList) {
+        return JSON.parse(todoList)
+    }
+    window.localStorage.setItem('todoList', [])
+    return []
 }
 
-const initialValue = {
-    todoList: getInitialTodos(),
+const initialValues = {
+    filterStatus: 'all',
+    todoList: getInitialState(),
 }
 
 export const todoSlice = createSlice({
     name: 'todo',
-    initialState: initialValue,
+    initialState: initialValues,
     reducers: {
         addTodo: (state, action) => {
-            const { id, title, description, status } = action.payload
-            return {
-                ...state,
-                todoList: [
-                    ...state.todoList,
-                    { id, title, description, status },
-                ],
+            state.todoList.push(action.payload)
+            const todoList = window.localStorage.getItem('todoList')
+            if (todoList) {
+                const todoListArr = JSON.parse(todoList)
+                todoListArr.push({
+                    ...action.payload,
+                })
+                window.localStorage.setItem(
+                    'todoList',
+                    JSON.stringify(todoListArr)
+                )
+            } else {
+                window.localStorage.setItem(
+                    'todoList',
+                    JSON.stringify([
+                        {
+                            ...action.payload,
+                        },
+                    ])
+                )
+            }
+        },
+        updateTodo: (state, action) => {
+            const todoList = window.localStorage.getItem('todoList')
+            if (todoList) {
+                const todoListArr = JSON.parse(todoList)
+                todoListArr.forEach((todo) => {
+                    if (todo.id === action.payload.id) {
+                        todo.status = action.payload.status
+                        todo.title = action.payload.title
+                    }
+                })
+                window.localStorage.setItem(
+                    'todoList',
+                    JSON.stringify(todoListArr)
+                )
+                state.todoList = [...todoListArr]
             }
         },
         deleteTodo: (state, action) => {
-            const { id } = action.payload
-            const newTodoList = state.todoList.filter(
-                (todoItem) => todoItem.id !== id
-            )
-            state.todoList = newTodoList
-        },
-        updateTodo: (state, action) => {
-            const { id, title, description, status } = action.payload
-            const todoItem = state.todoList.find((todo) => todo.id === id)
-            if (todoItem) {
-                todoItem.title = title
-                todoItem.description = description
-                todoItem.status = status
+            const todoList = window.localStorage.getItem('todoList')
+            if (todoList) {
+                const todoListArr = JSON.parse(todoList)
+                todoListArr.forEach((todo, index) => {
+                    if (todo.id === action.payload) {
+                        todoListArr.splice(index, 1)
+                    }
+                })
+                window.localStorage.setItem(
+                    'todoList',
+                    JSON.stringify(todoListArr)
+                )
+                state.todoList = todoListArr
             }
+        },
+        updateFilterStatus: (state, action) => {
+            state.filterStatus = action.payload
         },
     },
 })
 
-export const { addTodo, deleteTodo, updateTodo } = todoSlice.actions
+export const { addTodo, updateTodo, deleteTodo, updateFilterStatus } =
+    todoSlice.actions
+
 export default todoSlice.reducer
