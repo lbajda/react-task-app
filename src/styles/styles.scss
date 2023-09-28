@@ -1,12 +1,30 @@
-// @use "tailwind";
+// @tailwind base;
+// @tailwind components;
+// @tailwind utilities;
 
-// *,
-// *::after,
-// *::before {
-//     box-sizing: border-box;
-//     margin: 0;
-//     padding: 0;
+// @layer components {
+//   .btn {
+//     @apply px-5 py-2.5 inline-flex justify-center items-center gap-2 rounded-lg border border-transparent font-medium text-base outline-none transition-colors duration-300 focus:outline-none focus:ring-4;
+//     @apply ring-opacity-75 #{!important};
+
+//     // &-primary {
+//     //   @apply bg-indigo-100 text-indigo-500 hover:text-indigo-700 hover:bg-indigo-200 focus:ring-indigo-500 dark:bg-indigo-700 dark:hover:bg-indigo-600 dark:text-white dark:focus:ring-indigo-300;
+//     // }
+
+//     &-primary {
+//       @apply bg-indigo-500 text-white hover:text-indigo-700 hover:bg-indigo-200 focus:ring-indigo-500 dark:bg-indigo-700 dark:hover:bg-indigo-600 dark:text-indigo-500 dark:focus:ring-indigo-300;
+//     }
+
+//     &-gray {
+//       @apply bg-gray-100 text-gray-500 hover:text-white hover:bg-gray-500 focus:ring-gray-400 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-300 dark:text-white;
+//     }
+
+//     &-danger {
+//       @apply bg-red-100 text-red-500 hover:text-red-700 hover:bg-red-200 focus:ring-red-500 dark:bg-red-700 dark:hover:bg-red-600 dark:text-white dark:focus:ring-red-300;
+//     }
+//   }
 // }
+
 :root {
   --primaryPurple: #646ff0;
   --black-1: #646681;
@@ -39,30 +57,34 @@
 // }
 
 .custom-select {
-  background-image: url('data: image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzZiNzI4MCI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMTkuNSA4LjI1bC03LjUgNy41LTcuNS03LjUiIC8+PC9zdmc+');
+  background-image: url('data: image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iI2ZmZiI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMTkuNSA4LjI1bC03LjUgNy41LTcuNS03LjUiIC8+PC9zdmc+');
   background-repeat: no-repeat;
   background-size: 1.25rem;
   padding-right: 1.5rem;
   background-position: right 0.5rem center;
   appearance: none;
+}
+
+:is(.dark .dark\:custom-select) {
+  background-image: url('data: image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzM3NDE1MSI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMTkuNSA4LjI1bC03LjUgNy41LTcuNS03LjUiIC8+PC9zdmc+');
 
   &:hover,
   &:focus,
   &:active {
-    background-image: url('data: image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iI2ZmZiI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMTkuNSA4LjI1bC03LjUgNy41LTcuNS03LjUiIC8+PC9zdmc+');
+    background-image: url('data: image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzExMTgyNyI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMTkuNSA4LjI1bC03LjUgNy41LTcuNS03LjUiIC8+PC9zdmc+');
   }
-}
-
-:is(.dark .dark\:custom-select) {
-  background-image: url('data: image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iI2ZmZiI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMTkuNSA4LjI1bC03LjUgNy41LTcuNS03LjUiIC8+PC9zdmc+');
 }
 
 // <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
 // <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" width="24px" height="24px" viewBox="0 0 24 24" stroke-width="1.5" stroke="#0f172a"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
 //
-// gray-500
-// <svg xmlns="http://www.w3.org/2000/svg" fill="none" width="24px" height="24px" viewBox="0 0 24 24" stroke-width="1.5" stroke="#6b7280"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
-// PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzZiNzI4MCI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMTkuNSA4LjI1bC03LjUgNy41LTcuNS03LjUiIC8+PC9zdmc+
+// gray-700
+// <svg xmlns="http://www.w3.org/2000/svg" fill="none" width="24px" height="24px" viewBox="0 0 24 24" stroke-width="1.5" stroke="#374151"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+// PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzM3NDE1MSI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMTkuNSA4LjI1bC03LjUgNy41LTcuNS03LjUiIC8+PC9zdmc+
+//
+// gray-900
+// <svg xmlns="http://www.w3.org/2000/svg" fill="none" width="24px" height="24px" viewBox="0 0 24 24" stroke-width="1.5" stroke="#111827"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+// PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzExMTgyNyI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMTkuNSA4LjI1bC03LjUgNy41LTcuNS03LjUiIC8+PC9zdmc+
 //
 // white
 // <svg xmlns="http://www.w3.org/2000/svg" fill="none" width="24px" height="24px" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fff"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>

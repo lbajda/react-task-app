@@ -35,15 +35,15 @@ const ThemeToggle = () => {
         onChange={setDarkMode}
         className={`${
           darkMode
-            ? 'bg-indigo-700 focus:ring-indigo-300 hover:bg-indigo-600'
-            : 'bg-indigo-100 focus:ring-indigo-500 hover:bg-indigo-200'
-        } relative inline-flex items-center h-6 rounded-full w-11 outline-none focus:outline-none focus:ring-4 focus:ring-opacity-70`}>
+            ? 'bg-indigo-200 focus:ring-indigo-300 hover:bg-indigo-300'
+            : 'bg-indigo-500 focus:ring-indigo-300 hover:bg-indigo-700'
+        } relative inline-flex items-center h-6 rounded-full w-11 outline-none focus:outline-none focus:ring-4 focus:!ring-opacity-70 transition-all duration-300`}>
         <span className='sr-only'>Toggle Dark Mode</span>
         <span
           className={`${
             darkMode
-              ? 'translate-x-6 bg-white'
-              : 'translate-x-1 bg-indigo-500 hover:bg-indigo-700'
+              ? 'translate-x-6 bg-indigo-700 hover:bg-indigo-900'
+              : 'translate-x-1 bg-white'
           } inline-block w-4 h-4 transform rounded-full`}
         />
       </Switch>

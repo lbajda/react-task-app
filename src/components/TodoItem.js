@@ -52,7 +52,7 @@ function TodoItem({ todo }) {
   return (
     <>
       <motion.div
-        className='flex items-center justify-between p-4 mb-6 last:mb-0 rounded-lg shadow-md bg-white dark:bg-gray-800'
+        className='flex items-center justify-between p-4 mb-6 last:mb-0 rounded-lg shadow-md bg-white dark:bg-zinc-900'
         variants={child}>
         <div className='flex items-center justify-start gap-4'>
           <CheckButton checked={checked} handleCheck={handleCheck} />
@@ -85,35 +85,17 @@ function TodoItem({ todo }) {
         </div>
         <div className='flex items-center justify-center space-x-4'>
           <Button
-            extraClassName='!p-2.5'
-            variant='red'
+            className='btn btn-danger-outline !p-2.5'
             onClick={() => handleDelete()}
             tabIndex={0}>
             <TrashIcon className='h-6 w-6 ' />
           </Button>
           <Button
-            extraClassName='!p-2.5'
-            variant='indigo'
+            className='btn btn-primary !p-2.5'
             onClick={() => handleUpdate()}
             tabIndex={0}>
             <PencilIcon className='h-6 w-6' />
           </Button>
-          {/* <div
-            className='text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center dark:bg-red-500 dark:hover:bg-red-600 dark:focus:ring-red-300 transition-colors'
-            onClick={() => handleDelete()}
-            onKeyDown={() => handleDelete()}
-            tabIndex={0}
-            role='button'>
-            <TrashIcon className='h-6 w-6 ' />
-          </div> */}
-          {/* <div
-            className='text-white bg-indigo-600 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-100 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center  transition-colors'
-            onClick={() => handleUpdate()}
-            onKeyDown={() => handleUpdate()}
-            tabIndex={0}
-            role='button'>
-            <PencilIcon className='h-6 w-6' />
-          </div> */}
         </div>
       </motion.div>
       <TodoModal

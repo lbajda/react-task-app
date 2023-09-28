@@ -1,3 +1,58 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn {
+    @apply px-5 py-2.5 inline-flex justify-center items-center gap-2 rounded-lg border border-transparent font-medium text-base outline-none focus:outline-none focus:ring-4 focus:ring-opacity-70 transition-all duration-300;
+  }
+
+  .btn-primary {
+    @apply bg-indigo-100 text-indigo-500 hover:text-indigo-700 hover:bg-indigo-200 focus:ring-indigo-500 dark:bg-indigo-700 dark:hover:bg-indigo-600 dark:text-white dark:focus:ring-indigo-300;
+  }
+} */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .btn {
+    @apply px-5 py-2.5 inline-flex justify-center items-center gap-2 rounded-full border border-transparent font-medium text-base outline-none transition-all duration-300 focus:outline-none focus:ring-4;
+    @apply ring-opacity-75 !important;
+  }
+
+  .btn-primary {
+    @apply bg-indigo-500 text-white hover:text-white hover:bg-indigo-700 focus:ring-indigo-300 dark:bg-indigo-200 dark:hover:bg-indigo-300 dark:text-indigo-700 dark:hover:text-indigo-900 dark:focus:ring-indigo-300;
+  }
+
+  .btn-gray {
+    @apply bg-gray-500 text-white hover:text-white hover:bg-gray-700 focus:ring-gray-300 dark:bg-gray-200 dark:hover:bg-gray-300 dark:text-gray-700 dark:hover:text-gray-900 dark:focus:ring-gray-300;
+  }
+
+  .btn-danger {
+    @apply bg-red-500 text-white hover:text-white hover:bg-red-700 focus:ring-red-300 dark:bg-red-200 dark:hover:bg-red-300 dark:text-red-700 dark:hover:text-red-900 dark:focus:ring-red-300;
+  }
+
+  .btn-danger-outline {
+    @apply border-2 border-red-300 bg-white text-red-500 hover:text-white hover:bg-red-500 hover:border-red-500 focus:ring-red-300 focus:text-white focus:bg-red-500 dark:bg-red-200 dark:hover:bg-red-300 dark:text-red-700 dark:hover:text-red-900 dark:focus:ring-red-300 dark:border-transparent;
+  }
+
+  body {
+    @apply bg-white dark:bg-zinc-900 transition-colors duration-300;
+  }
+
+  /* dark:bg-red-200 dark:hover:bg-red-300 dark:text-red-700 dark:hover:text-red-900 dark:focus:ring-red-300 */
+
+  /* &-primary {
+      @apply bg-indigo-100 text-indigo-500 hover:text-indigo-700 hover:bg-indigo-200 focus:ring-indigo-500 dark:bg-indigo-700 dark:hover:bg-indigo-600 dark:text-white dark:focus:ring-indigo-300;
+    } */
+
+  /* .btn-gray {
+    @apply bg-gray-100 text-gray-500 hover:text-white hover:bg-gray-500 focus:ring-gray-400 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-300 dark:text-white;
+  } */
+
+  /* .btn-danger {
+    @apply bg-red-100 text-red-500 hover:text-red-700 hover:bg-red-200 focus:ring-red-500 dark:bg-red-700 dark:hover:bg-red-600 dark:text-white dark:focus:ring-red-300;
+  } */
+}

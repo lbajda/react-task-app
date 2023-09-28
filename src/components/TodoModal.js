@@ -99,39 +99,37 @@ export default function TodoModal({ type, modalOpen, setModalOpen, todo }) {
     <AnimatePresence>
       {modalOpen && (
         <motion.div
-          // className={styles.wrapper}
           className='fixed flex justify-center items-center top-0 left-0 w-full h-full'
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}>
           <div className='absolute top-0 left-0 w-full h-full bg-black bg-opacity-50'>
             <motion.div
-              // className={styles.container}
-              // className='relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-md p-4 md:container md:mx-auto w-11/12 sm:w-4/5 md:w-[32rem]'
               className='fixed top-0 left-0 w-full h-full '
               variants={dropIn}
               initial='hidden'
               animate='visible'
               exit='exit'>
-              <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg p-4 md:container md:mx-auto w-11/12 sm:w-4/5 md:w-[32rem] dark:bg-gray-100'>
+              <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  rounded-lg p-4 md:container md:mx-auto w-11/12 sm:w-4/5 md:w-[32rem] bg-white dark:bg-zinc-900'>
                 <div className='flex justify-end'>
                   <button
                     type='button'
-                    className='text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500'
+                    className='rounded-md text-gray-500 hover:text-gray-600 outline-none focus:outline-none focus:ring-2 focus:ring-gray-400 dark:text-gray-100 dark:hover:text-gray-200 dark:focus:ring-gray-300 transition-all duration-300'
                     onKeyDown={() => setModalOpen(false)}
                     onClick={() => setModalOpen(false)}>
                     <span className='sr-only'>Close</span>
                     <XMarkIcon className='h-6 w-6' aria-hidden='true' />
                   </button>
                 </div>
-                {/* <h1 className='text-2xl font-bold'>Add Task</h1> */}
                 <form
                   className='flex flex-col space-y-4 mt-4'
                   onSubmit={(e) => handleSubmit(e)}>
-                  <h1 className='text-2xl font-bold'>
+                  <h1 className='text-2xl font-bold text-gray-800 dark:text-gray-100'>
                     {type === 'add' ? 'Add' : 'Update'} Task
                   </h1>
-                  <label htmlFor='title' className='flex flex-col'>
+                  <label
+                    htmlFor='title'
+                    className='flex flex-col text-gray-700 dark:text-gray-50'>
                     Title
                     <input
                       type='text'
@@ -142,7 +140,9 @@ export default function TodoModal({ type, modalOpen, setModalOpen, todo }) {
                       className='border border-gray-300 p-2 outline-none rounded-md focus:border-gray-300  focus:ring-4 focus:ring-gray-200 focus:ring-opacity-75 transition-all duration-300'
                     />
                   </label>
-                  <label htmlFor='description' className='flex flex-col'>
+                  <label
+                    htmlFor='description'
+                    className='flex flex-col text-gray-700 dark:text-gray-50'>
                     Description
                     <textarea
                       name='description'
@@ -156,34 +156,23 @@ export default function TodoModal({ type, modalOpen, setModalOpen, todo }) {
                   </label>
 
                   <div className='flex flex-col md:flex-row md:space-x-4 md:space-y-0 space-y-4'>
-                    <label htmlFor='type' className='flex flex-col grow'>
+                    <label
+                      htmlFor='type'
+                      className='flex flex-col grow text-gray-700 dark:text-gray-50'>
                       Status
-                      {/* <select
-                                                name='status'
-                                                id='type'
-                                                value={status}
-                                                onChange={(e) =>
-                                                    setStatus(e.target.value)
-                                                }
-                                                className='border border-gray-300 p-2 outline-none rounded-md focus:border-gray-300  focus:ring-4 focus:ring-gray-200 focus:ring-opacity-75'>
-                                                <option value='incomplete'>
-                                                    Incomplete
-                                                </option>
-                                                <option value='complete'>
-                                                    Completed
-                                                </option>
-                                            </select> */}
                       <SelectButton
                         name='status'
                         id='type'
-                        className='block bg-white border border-gray-300 p-2 outline-none rounded-md focus:border-gray-300  focus:ring-4 focus:ring-gray-200 focus:ring-opacity-75 custom-select transition-all duration-300'
+                        className='block bg-white border border-gray-300 p-2 outline-none rounded-md focus:border-gray-300 focus:ring-4 focus:ring-gray-200 focus:ring-opacity-75 custom-select transition-all duration-300'
                         value={status}
                         onChange={(e) => setStatus(e.target.value)}>
                         <option value='incomplete'>Incomplete</option>
                         <option value='complete'>Completed</option>
                       </SelectButton>
                     </label>
-                    <label htmlFor='dueDate' className='flex flex-col grow'>
+                    <label
+                      htmlFor='dueDate'
+                      className='flex flex-col grow text-gray-700 dark:text-gray-50'>
                       Due Date
                       <input
                         type='date'
@@ -196,10 +185,12 @@ export default function TodoModal({ type, modalOpen, setModalOpen, todo }) {
                     </label>
                   </div>
                   <div className='flex flex-row-reverse justify-start pt-10 gap-2'>
-                    <Button variant='indigo' type='submit'>
+                    <Button className='btn btn-primary' type='submit'>
                       {type === 'add' ? 'Add Task' : 'Update Task'}
                     </Button>
-                    <Button variant='gray' onClick={() => setModalOpen(false)}>
+                    <Button
+                      className='btn btn-gray'
+                      onClick={() => setModalOpen(false)}>
                       Cancel
                     </Button>
                   </div>

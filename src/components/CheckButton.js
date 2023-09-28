@@ -6,14 +6,6 @@ const checkVariants = {
   unchecked: { pathLength: 0 },
 }
 
-const boxVariants = {
-  checked: {
-    background: '#4f46e5',
-    transition: { duration: 0.1 },
-  },
-  unchecked: { background: '#e2e8f0', transition: { duration: 0.1 } },
-}
-
 function CheckButton({ checked, handleCheck }) {
   const pathLength = useMotionValue(0)
   const opacity = useTransform(pathLength, [0.05, 0.15], [0, 1])
@@ -21,13 +13,13 @@ function CheckButton({ checked, handleCheck }) {
   return (
     <motion.div
       animate={checked ? 'checked' : 'unchecked'}
-      className='rounded-lg w-6 h-6 flex items-center justify-center cursor-pointer p-[5px] transition-all outline-none !bg-gray-300 aria-checked:!bg-indigo-100 dark:!bg-gray-100 dark:aria-checked:!bg-indigo-700 focus:ring-4 focus:ring-gray-500 aria-checked:focus:ring-indigo-300 duration-200 focus:outline-none'
+      className='rounded-lg w-6 h-6 flex items-center justify-center cursor-pointer p-[5px] transition-all outline-none !bg-white ring-2 hover:ring-3 ring-gray-600 hover:ring-gray-700  focus:outline-none aria-checked:!bg-indigo-500 aria-checked:ring-2 aria-checked:hover:ring-3 aria-checked:ring-indigo-500 dark:!bg-gray-200 dark:aria-checked:!bg-indigo-200 focus:ring-4 focus:ring-gray-300 aria-checked:focus:ring-4 aria-checked:focus:ring-indigo-300 dark:ring-gray-300 duration-200'
       role='checkbox'
       aria-checked={checked}
       tabIndex='0'
       onClick={() => handleCheck()}>
       <motion.svg
-        className='w-full h-full stroke-indigo-500 dark:stroke-white flex items-center justify-center'
+        className='w-full h-full stroke-white dark:stroke-indigo-700 flex items-center justify-center'
         viewBox='0 0 53 38'
         fill='none'
         xmlns='http://www.w3.org/2000/svg'>
