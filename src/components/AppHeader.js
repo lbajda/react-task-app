@@ -17,7 +17,7 @@ export default function AppHeader() {
   }
 
   return (
-    <div className={styles.appHeader}>
+    <div className='flex items-center justify-between h-16'>
       <Button variant='indigo' onClick={() => setModalOpen(true)}>
         Add Task
       </Button>
