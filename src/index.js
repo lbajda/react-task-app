@@ -13,11 +13,11 @@ import './styles/styles.scss'
 import { store } from './app/store'
 
 ReactDOM.render(
-    <React.StrictMode>
-        <Provider store={store}>
-            <App />
-            <BodyClasses />
-        </Provider>
-    </React.StrictMode>,
-    document.getElementById('root')
+  <React.StrictMode>
+    <Provider store={store}>
+      <App />
+      <BodyClasses />
+    </Provider>
+  </React.StrictMode>,
+  document.getElementById('root')
 )
