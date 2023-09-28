@@ -38,8 +38,7 @@ export default function AppContent() {
 
   return (
     <motion.div
-      // className={styles.content__wrapper}
-      className='bg-slate-200 dark:bg-slate-300 p-6 rounded-lg shadow-lg'
+      className='bg-gray-50 dark:bg-slate-300 p-6 rounded-lg'
       variants={container}
       initial='hidden'
       animate='visible'>
@@ -51,8 +50,10 @@ export default function AppContent() {
             // </motion.div>
           ))
         ) : (
-          <motion.p variants={child} className={styles.emptyText}>
-            No Todos
+          <motion.p
+            variants={child}
+            className='bg-white dark:bg-gray-800 max-w-max p-4 rounded-lg shadow-md font-medium text-xl text-center text-gray-800 dark:text-gray-100 mx-auto my-0'>
+            No Tasks
           </motion.p>
         )}
       </AnimatePresence>

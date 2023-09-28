@@ -18,9 +18,7 @@ export default function AppHeader() {
 
   return (
     <div className={styles.appHeader}>
-      <Button
-        className='bg-indigo-100 text-indigo-500 hover:text-indigo-700 hover:bg-indigo-200 focus:ring-indigo-500 dark:focus:ring-offset-gray-800'
-        onClick={() => setModalOpen(true)}>
+      <Button variant='indigo' onClick={() => setModalOpen(true)}>
         Add Task
       </Button>
       <SelectButton

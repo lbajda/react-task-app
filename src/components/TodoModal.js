@@ -113,7 +113,7 @@ export default function TodoModal({ type, modalOpen, setModalOpen, todo }) {
               initial='hidden'
               animate='visible'
               exit='exit'>
-              <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-md p-4 md:container md:mx-auto w-11/12 sm:w-4/5 md:w-[32rem]'>
+              <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg p-4 md:container md:mx-auto w-11/12 sm:w-4/5 md:w-[32rem] dark:bg-gray-100'>
                 <div className='flex justify-end'>
                   <button
                     type='button'
@@ -196,17 +196,12 @@ export default function TodoModal({ type, modalOpen, setModalOpen, todo }) {
                     </label>
                   </div>
                   <div className='flex flex-row-reverse justify-start pt-10 gap-2'>
-                    <Button
-                      className='bg-indigo-100 text-indigo-500 hover:text-indigo-700 hover:bg-indigo-200 focus:ring-indigo-500 dark:focus:ring-offset-gray-800'
-                      type='submit'>
+                    <Button variant='indigo' type='submit'>
                       {type === 'add' ? 'Add Task' : 'Update Task'}
                     </Button>
-                    <button
-                      type='button'
-                      className='bg-gray-100 text-gray-500 hover:text-white hover:bg-gray-500 focus:ring-gray-500 focus:ring-offset-2 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-600 dark:text-white dark:focus:ring-offset-gray-800'
-                      onClick={() => setModalOpen(false)}>
+                    <Button variant='gray' onClick={() => setModalOpen(false)}>
                       Cancel
-                    </button>
+                    </Button>
                   </div>
                 </form>
               </div>

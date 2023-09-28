@@ -27,20 +27,24 @@ const ThemeToggle = () => {
 
   return (
     <div className='flex items-center justify-end mt-8'>
-      <span className='mr-3 text-sm font-medium text-slate-800 dark:text-slate-100'>
+      <span className='mr-3 text-sm font-medium text-gray-800 dark:text-gray-100'>
         Dark Mode
       </span>
       <Switch
         checked={darkMode}
         onChange={setDarkMode}
         className={`${
-          darkMode ? 'bg-indigo-600' : 'bg-gray-200'
-        } relative inline-flex items-center h-6 rounded-full w-11`}>
+          darkMode
+            ? 'bg-indigo-700 focus:ring-indigo-300 hover:bg-indigo-600'
+            : 'bg-indigo-100 focus:ring-indigo-500 hover:bg-indigo-200'
+        } relative inline-flex items-center h-6 rounded-full w-11 outline-none focus:outline-none focus:ring-4 focus:ring-opacity-70`}>
         <span className='sr-only'>Toggle Dark Mode</span>
         <span
           className={`${
-            darkMode ? 'translate-x-6' : 'translate-x-1'
-          } inline-block w-4 h-4 transform bg-white rounded-full`}
+            darkMode
+              ? 'translate-x-6 bg-white'
+              : 'translate-x-1 bg-indigo-500 hover:bg-indigo-700'
+          } inline-block w-4 h-4 transform rounded-full`}
         />
       </Switch>
     </div>

@@ -25,14 +25,14 @@ function CheckButton({ checked, handleCheck }) {
   return (
     <motion.div
       animate={checked ? 'checked' : 'unchecked'}
-      className='rounded-md w-6 h-6 flex items-center justify-center cursor-pointer p-[5px] transition-colors outline-none !bg-slate-200 aria-checked:!bg-indigo-600 dark:!bg-slate-400 dark:aria-checked:!bg-indigo-600 focus:ring-4 focus:ring-slate-300 aria-checked:focus:ring-indigo-300 focus:ring-opacity-75 focus:outline-none'
+      className='rounded-lg w-6 h-6 flex items-center justify-center cursor-pointer p-[5px] transition-all outline-none !bg-gray-300 aria-checked:!bg-indigo-100 dark:!bg-gray-100 dark:aria-checked:!bg-indigo-700 focus:ring-4 focus:ring-gray-500 aria-checked:focus:ring-indigo-300 duration-200 focus:outline-none'
       variants={boxVariants}
       role='checkbox'
       aria-checked={checked}
       tabIndex='0'
       onClick={() => handleCheck()}>
       <motion.svg
-        className='w-full h-full stroke-white flex items-center justify-center'
+        className='w-full h-full stroke-indigo-500 dark:stroke-white flex items-center justify-center'
         viewBox='0 0 53 38'
         fill='none'
         xmlns='http://www.w3.org/2000/svg'>

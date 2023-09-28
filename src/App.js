@@ -11,7 +11,7 @@ function App() {
     <>
       <div className='container px-4 lg:px-8 mx-auto '>
         <ThemeToggle />
-        <PageTitle>TODO List</PageTitle>
+        <PageTitle>Task List</PageTitle>
         <div className='w-full mx-auto'>
           <AppHeader />
           <AppContent />
@@ -21,7 +21,7 @@ function App() {
         position='bottom-right'
         toastOptions={{
           style: {
-            fontSize: '1.4rem',
+            fontSize: '1.25rem',
           },
         }}
       />
