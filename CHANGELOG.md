@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/lbajda/react-todo-app/compare/v1.1.0...v1.2.0) (2023-09-28)
+
+
+### Features
+
+* src/index.js ([26f5c60](https://github.com/lbajda/react-todo-app/commit/26f5c60b04507f3507af43f1fa4bd8e6beeb9077))
+
 ## [1.1.0](https://github.com/lbajda/react-todo-app/compare/v1.0.0...v1.1.0) (2023-09-28)
 
 
