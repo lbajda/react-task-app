@@ -1,11 +1,7 @@
 import { motion, useMotionValue, useTransform } from 'framer-motion'
 import React from 'react'
-// import styles from '../styles/modules/todoItem.module.scss'
 
 const checkVariants = {
-  initial: {
-    color: '#fff',
-  },
   checked: { pathLength: 1 },
   unchecked: { pathLength: 0 },
 }
@@ -26,7 +22,6 @@ function CheckButton({ checked, handleCheck }) {
     <motion.div
       animate={checked ? 'checked' : 'unchecked'}
       className='rounded-lg w-6 h-6 flex items-center justify-center cursor-pointer p-[5px] transition-all outline-none !bg-gray-300 aria-checked:!bg-indigo-100 dark:!bg-gray-100 dark:aria-checked:!bg-indigo-700 focus:ring-4 focus:ring-gray-500 aria-checked:focus:ring-indigo-300 duration-200 focus:outline-none'
-      variants={boxVariants}
       role='checkbox'
       aria-checked={checked}
       tabIndex='0'
