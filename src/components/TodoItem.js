@@ -5,7 +5,6 @@ import React, { useEffect, useState } from 'react'
 import { TrashIcon, PencilIcon } from '@heroicons/react/24/outline'
 import { useDispatch } from 'react-redux'
 import { deleteTodo, updateTodo } from '../slices/todoSlice'
-import styles from '../styles/modules/todoItem.module.scss'
 import { getClasses } from '../utils/getClasses'
 import CheckButton from './CheckButton'
 import TodoModal from './TodoModal'
@@ -13,31 +12,23 @@ import Button from './Button'
 
 const child = {
   hidden: { y: 20, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-  },
+  visible: { y: 0, opacity: 1 },
 }
 
 function TodoItem({ todo }) {
   const dispatch = useDispatch()
-  const [checked, setChecked] = useState(false)
+  const [checked, setChecked] = useState(todo.status === 'complete')
   const [updateModalOpen, setUpdateModalOpen] = useState(false)
   const dueDate = new Date(todo.dueDate)
 
   useEffect(() => {
-    if (todo.status === 'complete') {
-      setChecked(true)
-    } else {
-      setChecked(false)
-    }
+    setChecked(todo.status === 'complete')
   }, [todo.status])
 
   const handleCheck = () => {
+    const newStatus = checked ? 'incomplete' : 'complete'
     setChecked(!checked)
-    dispatch(
-      updateTodo({ ...todo, status: checked ? 'incomplete' : 'complete' })
-    )
+    dispatch(updateTodo({ ...todo, status: newStatus }))
   }
 
   const handleDelete = () => {
@@ -48,6 +39,15 @@ function TodoItem({ todo }) {
   const handleUpdate = () => {
     setUpdateModalOpen(true)
   }
+
+  const createdDate = format(new Date(todo.time), 'p, M/d/yy')
+  const dueDateFormatted = todo.dueDate
+    ? format(new Date(todo.dueDate), 'M/d/yy')
+    : null
+  const isPastDue = isPast(dueDate) && todo.status !== 'complete'
+  const dueDateClass = isPastDue
+    ? 'text-red-500 dark:text-red-400'
+    : 'text-gray-500 dark:text-gray-400'
 
   return (
     <>
@@ -65,34 +65,29 @@ function TodoItem({ todo }) {
               {todo.title}
             </p>
             <div className='flex flex-row gap-3'>
-              <div className='text-gray-500 dark:text-gray-400 text-sm flex-auto'>
+              <div className='text-sm flex-auto text-gray-500 dark:text-gray-400'>
                 <span className='font-medium'>Created:&nbsp;</span>
-                {format(new Date(todo.time), 'p, M/d/yy')}
+                {createdDate}
               </div>
-              {todo.dueDate ? (
-                <div
-                  className={`text-sm flex-auto ${
-                    isPast(dueDate) && todo.status !== 'complete'
-                      ? 'text-red-500 dark:text-red-400'
-                      : 'text-gray-500 dark:text-gray-400'
-                  }`}>
+              {dueDateFormatted && (
+                <div className={`text-sm flex-auto ${dueDateClass}`}>
                   <span className='font-medium'>Due:&nbsp;</span>
-                  {format(new Date(todo.dueDate), 'M/d/yy')}
+                  {dueDateFormatted}
                 </div>
-              ) : null}
+              )}
             </div>
           </div>
         </div>
         <div className='flex items-center justify-center space-x-4'>
           <Button
             className='btn btn-danger-outline !p-2.5'
-            onClick={() => handleDelete()}
+            onClick={handleDelete}
             tabIndex={0}>
             <TrashIcon className='h-6 w-6 ' />
           </Button>
           <Button
             className='btn btn-primary !p-2.5'
-            onClick={() => handleUpdate()}
+            onClick={handleUpdate}
             tabIndex={0}>
             <PencilIcon className='h-6 w-6' />
           </Button>

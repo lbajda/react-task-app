@@ -127,38 +127,46 @@ export default function TodoModal({ type, modalOpen, setModalOpen, todo }) {
                   <h1 className='text-2xl font-bold text-gray-800 dark:text-gray-100'>
                     {type === 'add' ? 'Add' : 'Update'} Task
                   </h1>
-                  <label
-                    htmlFor='title'
-                    className='flex flex-col text-gray-700 dark:text-gray-50'>
-                    Title
+
+                  <div className='flex flex-col gap-2'>
+                    <div className='flex justify-between items-center'>
+                      <label htmlFor='title' className='default-label'>
+                        Title
+                      </label>
+                      <span className='block text-sm font-normal text-gray-500 dark:text-white/60'>
+                        Required
+                      </span>
+                    </div>
                     <input
                       type='text'
                       id='title'
                       name='title'
                       value={title}
                       onChange={(e) => setTitle(e.target.value)}
-                      className='border border-gray-300 p-2 outline-none rounded-md focus:border-gray-300  focus:ring-4 focus:ring-gray-200 focus:ring-opacity-75 transition-all duration-300'
+                      className='default-input'
+                      placeholder='Task Title...'
                     />
-                  </label>
-                  <label
-                    htmlFor='description'
-                    className='flex flex-col text-gray-700 dark:text-gray-50'>
-                    Description
+                  </div>
+
+                  <div className='flex flex-col gap-2'>
+                    <label htmlFor='description' className='default-label'>
+                      Description
+                    </label>
                     <textarea
                       name='description'
                       id='description'
                       value={description}
                       onChange={(e) => setDescription(e.target.value)}
-                      cols='30'
-                      rows='5'
-                      className='border border-gray-300 p-2 outline-none rounded-md focus:border-gray-300  focus:ring-4 focus:ring-gray-200 focus:ring-opacity-75 transition-all duration-300'
+                      className='default-input'
+                      rows='3'
+                      placeholder='Task description...'
                     />
-                  </label>
+                  </div>
 
                   <div className='flex flex-col md:flex-row md:space-x-4 md:space-y-0 space-y-4'>
                     <label
                       htmlFor='type'
-                      className='flex flex-col grow text-gray-700 dark:text-gray-50'>
+                      className='flex flex-col grow text-sm font-medium text-gray-800 dark:text-white'>
                       Status
                       <SelectButton
                         name='status'
