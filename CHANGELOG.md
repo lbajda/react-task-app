@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/lbajda/react-todo-app/compare/v1.2.0...v2.0.0) (2023-09-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* update 6 files
+
+### Performance Improvements
+
+* update 6 files ([3a6f17e](https://github.com/lbajda/react-todo-app/commit/3a6f17e6dbfcb9b5744a346d526d3bc550c1458a))
+
 ## [1.2.0](https://github.com/lbajda/react-todo-app/compare/v1.1.0...v1.2.0) (2023-09-28)
 
 
