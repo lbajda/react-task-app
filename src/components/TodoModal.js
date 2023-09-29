@@ -55,35 +55,23 @@ export default function TodoModal({ type, modalOpen, setModalOpen, todo }) {
       toast.error('Please enter a title')
       return
     }
+    const newTodo = {
+      id: uuid(),
+      title,
+      status,
+      description,
+      dueDate,
+      time: new Date().toLocaleString(),
+    }
     if (type === 'add') {
-      dispatch(
-        addTodo({
-          id: uuid(),
-          title,
-          status,
-          description,
-          dueDate,
-          time: new Date().toLocaleString(),
-        })
-      )
+      dispatch(addTodo(newTodo))
       toast.success('Task added successfully')
     } else if (
       type === 'update' &&
       todo &&
-      (todo.title !== title ||
-        todo.status !== status ||
-        todo.description !== description ||
-        todo.dueDate !== dueDate)
+      Object.keys(newTodo).some((key) => newTodo[key] !== todo[key])
     ) {
-      dispatch(
-        updateTodo({
-          ...todo,
-          title,
-          status,
-          description,
-          dueDate,
-        })
-      )
+      dispatch(updateTodo({ ...todo, ...newTodo }))
       toast.success('Task Updated successfully')
     } else {
       toast.error('No changes made')
