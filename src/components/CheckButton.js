@@ -17,7 +17,7 @@ function CheckButton({ checked, handleCheck }) {
       role='checkbox'
       aria-checked={checked}
       tabIndex='0'
-      onClick={() => handleCheck()}>
+      onClick={handleCheck}>
       <motion.svg
         className='w-full h-full stroke-white dark:stroke-indigo-700 flex items-center justify-center'
         viewBox='0 0 53 38'
