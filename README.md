@@ -10,6 +10,9 @@
 
 > A simple task app built with React, Redux, TailwindCSS and SASS.
 
+### 🏠 [Homepage](https://lbajda.github.io/react-task-app/)
+<!-- https://lbajda.github.io/react-task-app/ -->
+
 ## Install
 
 ```sh
