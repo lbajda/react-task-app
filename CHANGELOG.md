@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/lbajda/react-todo-app/compare/v2.0.1...v2.1.0) (2023-09-29)
+
+
+### Miscellaneous Chores
+
+* release 2.1.0 ([d65a1d6](https://github.com/lbajda/react-todo-app/commit/d65a1d682319df7ed164ed510ce69d50a53b04e7))
+
 ## [2.0.1](https://github.com/lbajda/react-todo-app/compare/v2.0.0...v2.0.1) (2023-09-29)
 
 
