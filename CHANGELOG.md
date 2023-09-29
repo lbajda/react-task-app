@@ -1,5 +1,20 @@
 # Changelog
 
+## [2.0.1](https://github.com/lbajda/react-todo-app/compare/v2.0.0...v2.0.1) (2023-09-29)
+
+
+### Bug Fixes
+
+* update 5 files ([5a4ce5e](https://github.com/lbajda/react-todo-app/commit/5a4ce5eb4a9c40231c38987168bffcb0c4db2068))
+* updates to TodoModal.js ([4b6a659](https://github.com/lbajda/react-todo-app/commit/4b6a659f67c838267b3a4114186a82cbca2a5159))
+
+
+### Performance Improvements
+
+* update CheckButton.js and styles.scss ([e4466ff](https://github.com/lbajda/react-todo-app/commit/e4466ff20180ab52bff002a71a089fbb4fabbcd8))
+* update TodoModal.js ([bcea572](https://github.com/lbajda/react-todo-app/commit/bcea57228fb6ca2c022af77834e6a7f60202bfb5))
+* update TodoModal.js ([0c75450](https://github.com/lbajda/react-todo-app/commit/0c75450c483cd9b4e61d53e957d94af998baa87a))
+
 ## [2.0.0](https://github.com/lbajda/react-todo-app/compare/v1.2.0...v2.0.0) (2023-09-29)
 
 
