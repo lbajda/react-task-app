@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import toast from 'react-hot-toast'
 import { addTodo, updateTodo } from '../slices/todoSlice'
-import Button, { SelectButton } from './Button'
+import Button from './Button'
 
 const dropIn = {
   hidden: {
