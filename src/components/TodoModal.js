@@ -184,7 +184,7 @@ export default function TodoModal({ type, modalOpen, setModalOpen, todo }) {
                         name='status'
                         value={status}
                         onChange={(e) => setStatus(e.target.value)}
-                        className='default-input'>
+                        className='default-input custom-select-2'>
                         <option value='incomplete'>Incomplete</option>
                         <option value='complete'>Completed</option>
                       </select>

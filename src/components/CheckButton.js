@@ -13,7 +13,7 @@ function CheckButton({ checked, handleCheck }) {
   return (
     <motion.div
       animate={checked ? 'checked' : 'unchecked'}
-      className='rounded-lg w-6 h-6 flex items-center justify-center cursor-pointer p-[5px] transition-all outline-none !bg-white ring-2 hover:ring-3 ring-gray-600 hover:ring-gray-700  focus:outline-none aria-checked:!bg-indigo-500 aria-checked:ring-2 aria-checked:hover:ring-3 aria-checked:ring-indigo-500 dark:!bg-gray-200 dark:aria-checked:!bg-indigo-200 focus:ring-4 focus:ring-gray-300 aria-checked:focus:ring-4 aria-checked:focus:ring-indigo-300 dark:ring-gray-300 duration-200'
+      className='rounded-lg w-6 h-6 flex items-center justify-center cursor-pointer p-[5px] transition-all outline-none !bg-white ring-2 hover:ring-3 ring-gray-600 hover:ring-gray-700  focus:outline-none aria-checked:!bg-indigo-500 aria-checked:ring-2 aria-checked:hover:ring-3 aria-checked:ring-indigo-500 dark:!bg-gray-200 dark:aria-checked:!bg-indigo-200 focus:ring-4 focus:ring-gray-300 aria-checked:focus:ring-4 aria-checked:focus:ring-indigo-300 dark:ring-gray-300 duration-200 shrink-0'
       role='checkbox'
       aria-checked={checked}
       tabIndex='0'

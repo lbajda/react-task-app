@@ -36,7 +36,7 @@ export default function AppContent() {
 
   return (
     <motion.div
-      className='bg-zinc-200 dark:bg-zinc-700 p-6 rounded-lg'
+      className='bg-zinc-200 dark:bg-zinc-700 p-6 rounded-lg mt-2'
       variants={container}
       initial='hidden'
       animate='visible'>

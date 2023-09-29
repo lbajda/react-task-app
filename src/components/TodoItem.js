@@ -56,7 +56,7 @@ function TodoItem({ todo }) {
         variants={child}>
         <div className='flex items-center justify-start gap-4'>
           <CheckButton checked={checked} handleCheck={handleCheck} />
-          <div className='flex flex-col overflow-hidden'>
+          <div className='flex flex-col overflow-hidden pr-5'>
             <p
               className={getClasses([
                 'font-medium text-xl break-words text-gray-800 dark:text-gray-100',
@@ -64,7 +64,7 @@ function TodoItem({ todo }) {
               ])}>
               {todo.title}
             </p>
-            <div className='flex flex-row gap-3'>
+            <div className='flex flex-col md:flex-row gap-1 md:gap-3'>
               <div className='text-sm flex-auto text-gray-500 dark:text-gray-400'>
                 <span className='font-medium'>Created:&nbsp;</span>
                 {createdDate}
