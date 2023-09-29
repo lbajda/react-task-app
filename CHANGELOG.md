@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.1](https://github.com/lbajda/react-task-app/compare/v2.1.0...v2.1.1) (2023-09-29)
+
+
+### Performance Improvements
+
+* update TodoModal.js ([d7dc764](https://github.com/lbajda/react-task-app/commit/d7dc7647e6269b83454575d7665a19d899289da8))
+
 ## [2.1.0](https://github.com/lbajda/react-todo-app/compare/v2.0.1...v2.1.0) (2023-09-29)
 
 
