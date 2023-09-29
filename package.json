@@ -1,18 +1,50 @@
 {
   "name": "task-app",
   "version": "2.0.1",
-  "author": "Luke Bajda",
+  "private": true,
   "description": "A simple task app built with React, Redux, TailwindCSS and SASS.",
-  "license": "MIT",
+  "homepage": "",
+  "bugs": {
+    "url": "https://github.com/lbajda/react-todo-app/issues"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lbajda/react-todo-app.git"
   },
-  "bugs": {
-    "url": "https://github.com/lbajda/react-todo-app/issues"
+  "license": "MIT",
+  "author": "Luke Bajda",
+  "scripts": {
+    "build": "react-scripts build",
+    "eject": "react-scripts eject",
+    "start": "react-scripts start",
+    "test": "react-scripts test"
   },
-  "homepage": "",
-  "private": true,
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "wesbos"
+    ],
+    "rules": {
+      "import/no-extraneous-dependencies": [
+        "error",
+        {
+          "devDependencies": true
+        }
+      ],
+      "react/prop-types": 0
+    }
+  },
   "dependencies": {
     "@fontsource/poppins": "^4.5.0",
     "@headlessui/react": "^1.7.17",
@@ -29,38 +61,6 @@
     "react-scripts": "5.0.0",
     "sass": "^1.68.0",
     "uuid": "^8.3.2"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "wesbos"
-    ],
-    "rules": {
-      "import/no-extraneous-dependencies": [
-        "error",
-        {
-          "devDependencies": true
-        }
-      ],
-      "react/prop-types": 0
-    }
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.2",
