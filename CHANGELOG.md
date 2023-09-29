@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.2.0](https://github.com/lbajda/react-task-app/compare/v2.1.1...v2.2.0) (2023-09-29)
+
+
+### Features
+
+* pushed build ([62991c3](https://github.com/lbajda/react-task-app/commit/62991c3fbfadc3656bbed84f081956ad9b3a72c5))
+
+
+### Bug Fixes
+
+* update .gitignore and package.json ([690f681](https://github.com/lbajda/react-task-app/commit/690f6810f517949b4461b233b643bbc759f14acb))
+
 ## [2.1.1](https://github.com/lbajda/react-task-app/compare/v2.1.0...v2.1.1) (2023-09-29)
 
 
