@@ -161,20 +161,6 @@ export default function TodoModal({ type, modalOpen, setModalOpen, todo }) {
                   </div>
 
                   <div className='flex flex-col md:flex-row md:space-x-4 md:space-y-0 space-y-4'>
-                    {/* <label
-                      htmlFor='type'
-                      className='flex flex-col grow text-sm font-medium text-gray-800 dark:text-white'>
-                      Status
-                      <SelectButton
-                        name='status'
-                        id='type'
-                        className='block bg-white border border-gray-300 p-2 outline-none rounded-md focus:border-gray-300 focus:ring-4 focus:ring-gray-200 focus:ring-opacity-75 custom-select transition-all duration-300'
-                        value={status}
-                        onChange={(e) => setStatus(e.target.value)}>
-                        <option value='incomplete'>Incomplete</option>
-                        <option value='complete'>Completed</option>
-                      </SelectButton>
-                    </label> */}
                     <div className='flex flex-col grow gap-2'>
                       <label htmlFor='type' className='default-label'>
                         Status
@@ -189,19 +175,6 @@ export default function TodoModal({ type, modalOpen, setModalOpen, todo }) {
                         <option value='complete'>Completed</option>
                       </select>
                     </div>
-                    {/* <label
-                      htmlFor='dueDate'
-                      className='flex flex-col grow text-gray-700 dark:text-gray-50'>
-                      Due Date
-                      <input
-                        type='date'
-                        id='dueDate'
-                        name='dueDate'
-                        value={dueDate}
-                        onChange={(e) => setDueDate(e.target.value)}
-                        className='border border-gray-300 p-2 outline-none rounded-md focus:border-gray-300  focus:ring-4 focus:ring-gray-200 focus:ring-opacity-75 transition-all duration-300'
-                      />
-                    </label> */}
                     <div className='flex flex-col grow gap-2'>
                       <label htmlFor='dueDate' className='default-label'>
                         Due Date
