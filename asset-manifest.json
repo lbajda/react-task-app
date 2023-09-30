@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/react-task-app/static/css/main.5493a7ca.css",
-    "main.js": "/react-task-app/static/js/main.07d93bcf.js",
+    "main.js": "/react-task-app/static/js/main.428e9db4.js",
     "static/media/poppins-all-400-normal.woff": "/react-task-app/static/media/poppins-all-400-normal.d9177076ce88015af78a.woff",
     "static/media/poppins-all-300-normal.woff": "/react-task-app/static/media/poppins-all-300-normal.1b572dd29946927b80b5.woff",
     "static/media/poppins-all-600-normal.woff": "/react-task-app/static/media/poppins-all-600-normal.69a5e00329a066e267e4.woff",
@@ -24,10 +24,10 @@
     "static/media/poppins-latin-ext-500-normal.woff2": "/react-task-app/static/media/poppins-latin-ext-500-normal.64676cfe1b3697ce0aec.woff2",
     "index.html": "/react-task-app/index.html",
     "main.5493a7ca.css.map": "/react-task-app/static/css/main.5493a7ca.css.map",
-    "main.07d93bcf.js.map": "/react-task-app/static/js/main.07d93bcf.js.map"
+    "main.428e9db4.js.map": "/react-task-app/static/js/main.428e9db4.js.map"
   },
   "entrypoints": [
     "static/css/main.5493a7ca.css",
-    "static/js/main.07d93bcf.js"
+    "static/js/main.428e9db4.js"
   ]
 }
