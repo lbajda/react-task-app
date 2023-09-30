@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.1](https://github.com/lbajda/react-task-app/compare/v2.2.0...v2.2.1) (2023-09-30)
+
+
+### Bug Fixes
+
+* :bug: TodoItem.js and TodoModal.js ([2be1507](https://github.com/lbajda/react-task-app/commit/2be1507b6bbb889a5d828beb956025c66db7489d))
+
 ## [2.2.0](https://github.com/lbajda/react-task-app/compare/v2.1.1...v2.2.0) (2023-09-29)
 
 
