@@ -19,7 +19,13 @@ function TodoItem({ todo }) {
   const dispatch = useDispatch()
   const [checked, setChecked] = useState(todo.status === 'complete')
   const [updateModalOpen, setUpdateModalOpen] = useState(false)
-  const dueDate = new Date(todo.dueDate)
+  const { timeZone } = Intl.DateTimeFormat().resolvedOptions()
+  const options = { timeZone }
+  const inputDate = new Date(todo.dueDate).toLocaleString('en-US', options)
+  const dueDateOffset = new Date(
+    new Date(inputDate).setHours(new Date(inputDate).getHours() + 6)
+  )
+  const dueDate = new Date(dueDateOffset)
 
   useEffect(() => {
     setChecked(todo.status === 'complete')
@@ -42,7 +48,7 @@ function TodoItem({ todo }) {
 
   const createdDate = format(new Date(todo.time), 'p, M/d/yy')
   const dueDateFormatted = todo.dueDate
-    ? format(new Date(todo.dueDate), 'M/d/yy')
+    ? format(new Date(dueDate), 'M/d/yy')
     : null
   const isPastDue = isPast(dueDate) && todo.status !== 'complete'
   const dueDateClass = isPastDue

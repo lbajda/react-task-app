@@ -66,13 +66,17 @@ export default function TodoModal({ type, modalOpen, setModalOpen, todo }) {
     if (type === 'add') {
       dispatch(addTodo(newTodo))
       toast.success('Task added successfully')
-    } else if (
-      type === 'update' &&
-      todo &&
-      Object.keys(newTodo).some((key) => newTodo[key] !== todo[key])
-    ) {
-      dispatch(updateTodo({ ...todo, ...newTodo }))
-      toast.success('Task Updated successfully')
+    } else if (type === 'update') {
+      dispatch(
+        updateTodo({
+          ...todo,
+          title,
+          status,
+          description,
+          dueDate,
+        })
+      )
+      toast.success('Task updated successfully')
     } else {
       toast.error('No changes made')
       return
