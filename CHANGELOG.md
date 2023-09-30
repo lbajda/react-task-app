@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.0](https://github.com/lbajda/react-task-app/compare/v2.2.1...v2.3.0) (2023-09-30)
+
+
+### Features
+
+* create LICENSE.md ([9e9e783](https://github.com/lbajda/react-task-app/commit/9e9e78397f326478528a088fe8c2a32e4350e875))
+
 ## [2.2.1](https://github.com/lbajda/react-task-app/compare/v2.2.0...v2.2.1) (2023-09-30)
 
 
