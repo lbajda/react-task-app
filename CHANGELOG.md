@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.4.0](https://github.com/lbajda/react-task-app/compare/v2.3.0...v2.4.0) (2023-10-01)
+
+
+### Features
+
+* feat:  ([7c8d1da](https://github.com/lbajda/react-task-app/commit/7c8d1da3200c510a35e44a6ee9a6e16dbf0a372f))
+
 ## [2.3.0](https://github.com/lbajda/react-task-app/compare/v2.2.1...v2.3.0) (2023-09-30)
 
 
